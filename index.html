@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио студента - достижения и компетенции">
+    <title>Портфолио | Студент</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0c12;
+            color: #e2e4e8;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            background: #0f1117;
+            border-bottom: 1px solid #1e2432;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        nav {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #cdd3e6;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #2ecc71;
+        }
+
+        .theme-btn {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+            }
+            .logo {
+                font-size: 1.3rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* ============ ИНТРО ============ */
+        .intro-section {
+            padding: 3rem 0 2rem 0;
+        }
+
+        .intro-text p {
+            color: #b1b9d0;
+            margin-bottom: 0.75rem;
+        }
+
+        .intro-text h1 {
+            font-size: 2.4rem;
+            margin: 0.5rem 0 0.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* ЗЕЛЕНЫЙ ГРАДИЕНТ ДЛЯ ЗАГЛАВНОГО ТЕКСТА */
+        /* Секции */
+        .section {
+            margin: 2.5rem 0 3rem;
+            background: #11141c;
+            border-radius: 1.25rem;
+            padding: 2rem 2rem;
+            border: 1px solid #1e2532;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #2ecc71;
+            padding-left: 1rem;
+            color: #f0f3fc;
+        }
+
+        .about-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .about-list li {
+            background: #0e1119;
+            border-left: 3px solid #2ecc71;
+            padding: 1rem 1.2rem;
+            border-radius: 0.75rem;
+        }
+
+        .about-list strong {
+            color: #4cd964;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .about-list span {
+            color: #b9c3e0;
+            font-size: 0.92rem;
+        }
+
+        /* вкладки */
+        .competencies-tabs {
+            display: flex;
+            gap: 12px;
+            margin: 1.5rem 0 2rem 0;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #252e3f;
+            padding-bottom: 0.75rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #b1bde0;
+            cursor: pointer;
+            border-radius: 2rem;
+            transition: 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .tab-btn.active {
+            background: #1e2a2a;
+            color: #2ecc71;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .competency-card {
+            background: #0e1119;
+            border-radius: 0.85rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid #20273a;
+        }
+
+        .competency-card span {
+            font-weight: 700;
+            color: #4cd964;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .competency-card p {
+            color: #cbd5f0;
+            font-size: 0.88rem;
+        }
+
+        /* достижения */
+        .achievements-simple {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .achieve-card {
+            background: #0e1119;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            flex: 1 1 260px;
+            border-left: 3px solid #2ecc71;
+        }
+
+        .achieve-badge {
+            font-weight: 600;
+            color: #5fe084;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* проекты */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .proj-card {
+            background: #0e1119;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #20273a;
+        }
+
+        .proj-body {
+            padding: 1.2rem;
+        }
+
+        .proj-meta {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6fbf7a;
+            margin-bottom: 0.5rem;
+        }
+
+        .proj-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #eef3ff;
+        }
+
+        .proj-desc {
+            font-size: 0.85rem;
+            color: #b5c0e0;
+            margin: 0.6rem 0;
+            line-height: 1.4;
+        }
+
+        .proj-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .ptag {
+            background: #1b212f;
+            padding: 0.2rem 0.7rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            color: #b8ccff;
+        }
+
+        /* гражданская позиция */
+        .civic-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .civic-card {
+            background: #0e1119;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            flex: 1;
+            border: 1px solid #262e42;
+        }
+
+        .civic-ico {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .civic-t {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #e2e8ff;
+        }
+
+        .civic-d {
+            font-size: 0.85rem;
+            color: #b7c2e2;
+        }
+
+        .values-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .val-card {
+            background: #0a0d14;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            flex: 1;
+            text-align: center;
+            border: 1px solid #262e42;
+        }
+
+        .val-ico {
+            font-size: 1.7rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .val-t {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .val-d {
+            font-size: 0.8rem;
+            color: #9fabcf;
+        }
+
+        /* документы */
+        .docs-placeholder {
+            background: #0e1119;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px dashed #3f4870;
+            color: #8f9bcb;
+        }
+
+        /* контакты */
+        .contacts-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            background: #0e1119;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid #272e44;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: #1e2a2a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2ecc71;
+            font-size: 1.2rem;
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            color: #dae2ff;
+        }
+
+        .contact-info a {
+            color: #5cd67a;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        /* footer */
+        footer {
+            background: #0b0e15;
+            padding: 1.8rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid #1c2333;
+            font-size: 0.8rem;
+            color: #8c98bc;
+        }
+
+        .foot-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .back-to-top {
+            color: #2ecc71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.gallery-item {
+    background: #0e1119;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #262e42;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #1a202c;
+}
+
+.gallery-caption {
+    padding: 0.7rem;
+    font-size: 0.8rem;
+    color: #bdc3e6;
+    text-align: center;
+    border-top: 1px solid #20273a;
+}
+
+/* Лайтбокс (увеличение фото) */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+        @media (max-width: 640px) {
+            .section {
+                padding: 1.3rem;
+            }
+            .proj-grid {
+                grid-template-columns: 1fr;
+            }
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+            .foot-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - тёмная навигация -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <nav>
+                    <a href="#about">О себе</a>
+                    <a href="#competencies">Компетенции</a>
+                    <a href="#achievements">Достижения</a>
+                    <a href="#works">Работы</a>
+                    <a href="#docs">Документы</a>
+                    <a href="#citizen">Я гражданин</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- intro без картинки для чистоты -->
+        <section class="intro-section">
+            <div class="intro-text">
+                <p style="color:#8f9fcb; font-size:0.85rem;">Министерство образования и молодежной политики Свердловской области</p>
+                <h1>Нохрин <span class="gradient-text">Игорь</span></h1>
+                <p style="font-size:1rem; margin-top:0.25rem;"><strong>Студент ГАПОУ СО «ЕКТС»</strong></p>
+                <p style="font-size:0.9rem; margin-top:0.75rem;">
+                    Специальность: 09.02.07 «Информационные системы и программирование»<br>
+                    Группа: ПР-42 • Курс: 4-й
+                </p>
+                <p style="margin-top:1.2rem; font-size:0.9rem; color:#b4c0e2;">
+                    Портфолио демонстрирует результаты моего обучения в колледже: 
+                    реализованные проекты, полученные компетенции, достижения в учебной 
+                    и внеучебной деятельности, а также официальные документы.
+                </p>
+            </div>
+        </section>
+
+        <!-- О себе -->
+        <section class="section" id="about">
+            <h2 class="section-title">О себе</h2>
+            <ul class="about-list">
+                <li><strong>Образование</strong><span>ГАПОУ СО «ЕКТС» • Информационные системы и программирование</span></li>
+                <li><strong>Основные знания и умения</strong><span>Разработка веб и мобильных приложений, работа с БД, администрирование, C#, .NET, WPF, Git</span></li>
+                <li><strong>Личностные качества</strong><span>Ответственность, быстрое обучение, командная работа, аналитическое мышление</span></li>
+            </ul>
+        </section>
+
+        <!-- Компетенции: вкладки без анимаций -->
+        <section class="section" id="competencies">
+            <h2 class="section-title">Профессиональные стандарты</h2>
+            <div class="competencies-tabs">
+                <button class="tab-btn active" data-tab="ok">Общие компетенции</button>
+                <button class="tab-btn" data-tab="pk">Профессиональные компетенции</button>
+                <button class="tab-btn" data-tab="dpk">Доп. компетенции</button>
+            </div>
+            <!-- ОК -->
+            <div class="tab-content active" id="tab-ok">
+                <div class="competencies-grid">
+                    <div class="competency-card"><span>ОК 01</span><p>Выбирать способы решения задач профессиональной деятельности</p></div>
+                    <div class="competency-card"><span>ОК 02</span><p>Использовать современные средства поиска и интерпретации информации</p></div>
+                    <div class="competency-card"><span>ОК 03</span><p>Планировать и реализовывать собственное профессиональное развитие</p></div>
+                    <div class="competency-card"><span>ОК 04</span><p>Эффективно работать в коллективе и команде</p></div>
+                    <div class="competency-card"><span>ОК 05</span><p>Осуществлять устную и письменную коммуникацию</p></div>
+                    <div class="competency-card"><span>ОК 06</span><p>Проявлять гражданско-патриотическую позицию</p></div>
+                    <div class="competency-card"><span>ОК 07</span><p>Содействовать сохранению окружающей среды</p></div>
+                    <div class="competency-card"><span>ОК 08</span><p>Использовать средства физической культуры</p></div>
+                    <div class="competency-card"><span>ОК 09</span><p>Пользоваться профессиональной документацией</p></div>
+                </div>
+            </div>
+            <!-- ПК -->
+            <div class="tab-content" id="tab-pk">
+                <div class="competencies-grid">
+                    <div class="competency-card"><span>ПК 1.1-1.6</span><p>Разработка, отладка, тестирование программных модулей, мобильные приложения</p></div>
+                    <div class="competency-card"><span>ПК 2.1-2.5</span><p>Интеграция, отладка, тестовые наборы, инспектирование кода</p></div>
+                    <div class="competency-card"><span>ПК 4.1-4.4</span><p>Сопровождение, инсталляция, защита ПО</p></div>
+                    <div class="competency-card"><span>ПК 11.1-11.6</span><p>Проектирование, администрирование и защита баз данных</p></div>
+                </div>
+            </div>
+            <!-- ДПК -->
+            <div class="tab-content" id="tab-dpk">
+                <div class="competencies-grid">
+                    <div class="competency-card"><span>ДПК 2.1</span><p>Системный анализ, UML, MVC, фреймворки, паттерны</p></div>
+                    <div class="competency-card"><span>ДПК 2.2</span><p>Работа с системами контроля версий (Git, Gitflow)</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Достижения (без анимаций) -->
+        <section class="section" id="achievements">
+            <h2 class="section-title">Личные достижения</h2>
+            <div class="achievements-simple">
+                <div class="achieve-card">
+                    <div class="achieve-badge">🥋 Каратэ / Кикбоксинг</div>
+                    <div style="font-size:0.85rem; color:#bac6ec;">Желто-оранжевый пояс, призовые места среди юношей 13–16 лет (вес 55–60 кг).</div>
+                </div>
+                <div class="achieve-card">
+                    <div class="achieve-badge">🎖️ Благодарственные грамоты</div>
+                    <div style="font-size:0.85rem; color:#bac6ec;">За время службы в ВС РФ был награжден двумя грамотами за исполнение обязанностей и оказание помощи в строительстве "Аллеи городов героев"</div>
+                </div>
+            </div>
+           <div class="gallery-grid" id="achievementsGallery"></div>
+        </section>
+
+        <!-- Проекты (works) -->
+        <section class="section" id="works">
+            <h2 class="section-title">Ключевые проекты</h2>
+            <div class="proj-grid">
+                <div class="proj-card">
+                    <div class="proj-body">
+                        <div class="proj-meta">Лабораторная работа • WPF</div>
+                        <div class="proj-title">WPF-Блокнот</div>
+                        <div class="proj-desc">Десктопное приложение для сохранения и управления текстом, работа с файловой системой.</div>
+                        <div class="proj-tech"><span class="ptag">C#</span><span class="ptag">.NET</span><span class="ptag">WPF</span></div>
+                    </div>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-body">
+                        <div class="proj-meta">Курсовой проект • MAUI</div>
+                        <div class="proj-title">Электронный кошелек дисконтных карт</div>
+                        <div class="proj-desc">Мобильное приложение на C# .NET MAUI, хранение карт, сканер штрих-кодов.</div>
+                        <div class="proj-tech"><span class="ptag">C#</span><span class="ptag">MAUI</span><span class="ptag">SQLite</span></div>
+                    </div>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-body">
+                        <div class="proj-meta">Лабораторная • WPF</div>
+                        <div class="proj-title">Генератор экзаменационных билетов</div>
+                        <div class="proj-desc">Создание билетов на основе базы вопросов, рандомизация, экспорт в PDF.</div>
+                        <div class="proj-tech"><span class="ptag">C#</span><span class="ptag">WPF</span><span class="ptag">JSON</span></div>
+                    </div>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-body">
+                        <div class="proj-meta">Курсовая работа • WPF</div>
+                        <div class="proj-title">Панель администратора магазина автозапчастей</div>
+                        <div class="proj-desc">Управление товарами, складом, отчёты, работа с БД (SQL Server).</div>
+                        <div class="proj-tech"><span class="ptag">C#</span><span class="ptag">WPF</span><span class="ptag">SQL</span></div>
+                    </div>
+                    
+                </div>
+                 
+            </div>
+            <div class="gallery-grid" id="projectsGallery"></div>
+        </section>
+
+
+        <!-- Я гражданин -->
+        <section class="section" id="citizen">
+            <h2 class="section-title">Я гражданин</h2>
+            <div class="civic-split">
+                <div class="civic-card">
+                    <div class="civic-ico">🚒</div>
+                    <div class="civic-t">Экскурсия в МЧС России</div>
+                    <div class="civic-d">Посещение Уральского института ГПС МЧС, знакомство с бытом курсантов и историей спасателей.</div>
+                </div>
+                <div class="civic-card">
+                    <div class="civic-ico">🪖</div>
+                    <div class="civic-t">Военное училище</div>
+                    <div class="civic-d">Изучение военной техники, сборка/разборка оружия, практика в противогазах.</div>
+                </div>
+            </div>
+            <div class="values-row">
+                <div class="val-card"><div class="val-ico">🌍</div><div class="val-t">Активная гражданская позиция</div><div class="val-d">Участие в мероприятиях колледжа, волонтёрство, экскурсии.</div></div>
+                <div class="val-card"><div class="val-ico">💪</div><div class="val-t">Спорт и ЗОЖ</div><div class="val-d">Кикбоксинг, соревнования, поддержание физической формы.</div></div>
+                <div class="val-card"><div class="val-ico">📚</div><div class="val-t">Непрерывное развитие</div><div class="val-d">Постоянное совершенствование профессиональных и личных качеств</div></div>
+            </div>
+            
+        </section>
+<div class="gallery-grid" id="civicGallery"></div>
+        <!-- Контакты -->
+        <section class="section" id="contacts">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contacts-wrapper">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-info"><h4>Email</h4><a href="mailto:igor.nogrin@inbox.ru">igor.nogrin@inbox.ru</a></div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <div class="contact-info"><h4>GitHub</h4><a href="#">github.com/EyEL3ss</a></div>
+                </div>
+     
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="foot-inner">
+            <div>© Нохрин Игорь · ПР-42 · ЕКТС · 2026</div>
+            <div class="foot-note">Портфолио студента информационных систем</div>
+            <a href="#" class="back-to-top">↑ Наверх</a>
+        </div>
+    </footer>
+
+    <script>
+        // === Данные для галерей ===
+        // Достижения: фото наград, соревнований
+        const achievementsImages = [
+    { src: "images/photo_3_2026-05-16_06-43-57.jpg",  },
+    { src: "images/photo_2_2026-05-16_06-43-57.jpg", caption: "📜 Благодарственная грамота" },
+];
+
+// ПРОЕКТЫ — скриншоты ваших приложений
+const projectsImages = [
+    { src: "images/photo_5_2026-05-16_06-43-43.jpg", caption: "WPF-Блокнот — интерфейс" },
+    { src: "images/photo_3_2026-05-16_06-44-34.jpg", caption: "Электронный кошелек" },
+    { src: "images/photo_2026-05-16_06-46-36.jpg", caption: "Генератор билетов" },
+    { src: "images/photo_4_2026-05-16_06-43-43.jpg", caption: "Панель администратора" }
+];
+
+// ГРАЖДАНСКАЯ ПОЗИЦИЯ — фото экскурсий
+const civicImages = [
+    { src: "images/photo_1_2026-05-16_06-43-43.jpg",},
+    { src: "images/photo_2_2026-05-16_06-43-43.jpg", },
+    { src: "images/photo_3_2026-05-16_06-43-43.jpg", }
+];
+        
+        // Функция отрисовки галереи
+        function renderGallery(containerId, imagesArray) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+            imagesArray.forEach(img => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${img.src}" alt="${img.caption}" loading="lazy">
+                    <div class="gallery-caption">${img.caption}</div>
+                `;
+                galleryItem.addEventListener('click', () => {
+                    showLightbox(img.src, img.caption);
+                });
+                container.appendChild(galleryItem);
+            });
+        }
+        
+        // Лайтбокс (простой)
+        function showLightbox(src, caption) {
+            const existingLightbox = document.querySelector('.lightbox');
+            if(existingLightbox) existingLightbox.remove();
+            
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <button class="lightbox-close">&times;</button>
+                <img src="${src}" alt="${caption}">
+                <div style="position:absolute; bottom:20px; left:0; right:0; text-align:center; color:white; background:rgba(0,0,0,0.6); width:fit-content; margin:0 auto; padding:6px 12px; border-radius:20px; font-size:0.8rem;">${caption}</div>
+            `;
+            document.body.appendChild(lightbox);
+            lightbox.addEventListener('click', (e) => {
+                if(e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                    lightbox.remove();
+                }
+            });
+        }
+        
+        // Инициализация галерей
+        renderGallery('achievementsGallery', achievementsImages);
+        renderGallery('projectsGallery', projectsImages);
+        renderGallery('civicGallery', civicImages);
+        
+        // Компетенции вкладки
+        (function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = {
+                'ok': document.getElementById('tab-ok'),
+                'pk': document.getElementById('tab-pk'),
+                'dpk': document.getElementById('tab-dpk')
+            };
+            
+            function activateTab(tabId) {
+                Object.values(tabContents).forEach(content => {
+                    if(content) content.classList.remove('active');
+                });
+                if(tabContents[tabId]) tabContents[tabId].classList.add('active');
+                
+                tabBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if(btn.getAttribute('data-tab') === tabId) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const tab = btn.getAttribute('data-tab');
+                    if(tab === 'ok') activateTab('ok');
+                    else if(tab === 'pk') activateTab('pk');
+                    else if(tab === 'dpk') activateTab('dpk');
+                });
+            });
+            activateTab('ok');
+        })();
+        
+        // Плавный скролл
+        document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const hash = this.getAttribute('href');
+                if(hash && hash !== '#') {
+                    const targetId = hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if(targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else if(hash === '#') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
